@@ -15,7 +15,9 @@ model Cliente {
   id      Int      @id @default(autoincrement())
   nome    String 
   descricao String 
-  coletas Coletas[]
+  coletas Coleta[]
+  createAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 
@@ -24,4 +26,6 @@ model Coleta {
   infoColeta String 
   cliente Cliente @relation(fields: [clienteId], references: [id])
   clienteId Int
+  createAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
