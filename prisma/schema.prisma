@@ -23,9 +23,10 @@ model Cliente {
 
 model Coleta {
   id         Int        @id @default(autoincrement())
-  infoColeta String 
+  infoColeta Json 
   cliente Cliente @relation(fields: [clienteId], references: [id])
   clienteId Int
   createAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
