@@ -1,0 +1,22 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:5.7
+    platform: linux/x86_64
+    restart: always
+    environment:
+      - MYSQL_PASSWORD=password
+      - MYSQL_DATABASE=mydb
+      - MYSQL_ROOT_PASSWORD=password
+    ports:
+      # <Port exposed> : <MySQL Port running inside container>
+      - '3312:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3306'
+      # Where our data will be persisted
+    volumes:
+      - db_data:/var/lib/mysql
+# Names our volume
+volumes:
+  db_data:
